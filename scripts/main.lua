@@ -59,10 +59,6 @@ function GatherLite:OnInitialize()
     self.db = LibStub("AceDB-3.0"):New("GatherLiteSettings", _GatherLite.configsDefaults, true)
     self.minimap = LibStub("LibDBIcon-1.0")
 
-    GatherLite:print(GatherLite:Colorize(_GatherLite.version, "blue"), "has been loaded");
-    GatherLite:print("use |cFF00FF00/gather|r or |cFF00FF00/gatherlite|r to access addon settings");
-    GatherLite:print("Keep this addon alive by donating a coffee at " .. GatherLite:Colorize("https://www.buymeacoffee.com/yuImx6KOY", "cyan"));
-
     GatherLite.minimap:Register("GatherLiteMinimapIcon", minimapIcon, self.db.profile.minimap);
 
     GatherLite:RegisterEvent("UNIT_SPELLCAST_SENT", "EventHandler")
@@ -83,11 +79,6 @@ function GatherLite:OnInitialize()
     GatherLite:RegisterChatCommand("gather", "GatherSlash")
     GatherLite:RegisterChatCommand("gatherlite", "GatherSlash")
 
-    GatherLite:RegisterComm(_GatherLite.name .. "Ver", "VersionCheck")
-    GatherLite:ScheduleRepeatingTimer("SendVersionCheck", 10)
-    --GatherLite:ScheduleRepeatingTimer("LoadMinimap", 2)
-
-    GatherLite:SendVersionCheck()
     GatherLite:Load();
 end
 
